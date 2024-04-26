@@ -4,22 +4,22 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.themovie.core.ui.BaseViewModel
+import com.example.themovie.data.mapper.MovieEntityMapper
+import com.example.themovie.data.model.MovieResult
 import com.example.themovie.domain.model.MovieEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MoviesViewModel:ViewModel() {
+class MoviesViewModel:BaseViewModel() {
 
-    fun fetchMovies():LiveData<ArrayList<MovieEntity>> {
-        val result:MutableLiveData<ArrayList<MovieEntity>> = MutableLiveData()
+    fun fetchMovies():LiveData<List<MovieEntity>> {
+        val result:MutableLiveData<List<MovieEntity>> = MutableLiveData()
             viewModelScope.launch(Dispatchers.IO) {
-                val movies = ArrayList<MovieEntity>()
-                movies.add(MovieEntity(1, "The Shawshank Redemption", "/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg"))
-                movies.add(MovieEntity(1, "The Shawshank Redemption", "/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg"))
-                movies.add(MovieEntity(1, "The Shawshank Redemption", "/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg"))
-                movies.add(MovieEntity(1, "The Shawshank Redemption", "/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg"))
-                movies.add(MovieEntity(1, "The Shawshank Redemption", "/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg"))
-                result.postValue(movies)
+                val movieResult:MovieResult? = movieService.getTopRatedMovies().body() as MovieResult
+                movieResult?.let {
+                    result.postValue(MovieEntityMapper().invoke(it))
+                }
             }
         return result
     }
