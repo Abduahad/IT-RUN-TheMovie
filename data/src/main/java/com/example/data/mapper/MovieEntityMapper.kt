@@ -1,8 +1,8 @@
-package com.example.themovie.data.mapper
+package com.example.data.mapper
 
-import com.example.themovie.data.model.MovieModel
-import com.example.themovie.data.model.MovieResult
-import com.example.themovie.domain.model.MovieEntity
+import com.example.data.model.MovieModel
+import com.example.data.model.MovieResult
+import com.example.domain.model.MovieEntity
 
 class MovieEntityMapper : (MovieResult) -> List<MovieEntity> {
     fun map(movieModel: MovieModel): MovieEntity {

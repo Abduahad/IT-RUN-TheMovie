@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.themovie.R
-import com.example.themovie.data.utils.Constants
-import com.example.themovie.domain.model.MovieEntity
+import com.example.data.utils.Constants
+import com.example.domain.model.MovieEntity
 
 class MoviesAdapter(private val movies: List<MovieEntity>,
                     private val onClickListener: View.OnClickListener): RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {

@@ -1,5 +1,6 @@
-package com.example.themovie.data
+package com.example.data
 
+import com.example.data.interceptors.APILoggingInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -11,6 +12,7 @@ object MovieClient {
         "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzVmMmMxNTY2YzZmMWU2OWM1MWVlZmIxNzkxOTkzOCIsInN1YiI6IjY2MWQ3NTZlZmQ0YTk2MDE4NjZjNjMyMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8qJvqhvn0SdU-Sq9pcs3Jviy__2mE6d9sep-roAHAfU"
 
     private val okHttpClient = OkHttpClient.Builder()
+        .addInterceptor(APILoggingInterceptor())
         .addInterceptor { chain ->
             val original = chain.request()
             val requestBuilder = original.newBuilder()

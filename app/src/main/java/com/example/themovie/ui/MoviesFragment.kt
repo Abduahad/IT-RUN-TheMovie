@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.themovie.R
-import com.example.themovie.domain.model.MovieEntity
+import com.example.domain.model.MovieEntity
 
 class MoviesFragment : Fragment(), View.OnClickListener {
     private lateinit var viewModel: MoviesViewModel

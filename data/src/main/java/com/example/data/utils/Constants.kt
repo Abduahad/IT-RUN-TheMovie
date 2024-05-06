@@ -1,4 +1,4 @@
-package com.example.themovie.data.utils
+package com.example.data.utils
 
 class Constants {
     companion object {

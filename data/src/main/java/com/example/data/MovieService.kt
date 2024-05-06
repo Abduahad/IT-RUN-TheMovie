@@ -1,6 +1,6 @@
-package com.example.themovie.data
+package com.example.data
 
-import com.example.themovie.data.model.MovieResult
+import com.example.data.model.MovieResult
 import retrofit2.Response
 import retrofit2.http.GET
 
